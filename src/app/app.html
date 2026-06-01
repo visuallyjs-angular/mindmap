@@ -1,0 +1,27 @@
+<div class="vjs-mindmap">
+    <div class="vjs-mindmap-canvas">
+        <vjs-surface [viewOptions]="viewOptions" [renderOptions]="renderOptions">
+            <vjs-controls/>
+            <vjs-miniview/>
+        </vjs-surface>
+    </div>
+    <div class="vjs-mindmap-rhs">
+
+        <div class="description">
+            <h3>Mindmap Builder</h3>
+            <ul>
+                <li>Click the note icon in the upper left to inspect/edit a node.</li>
+                <li>Click the X button to delete a node</li>
+                <li>Click the + button to add a new subtopic. Subtopics can be added to the left or right of the
+                    main node.
+                </li>
+            </ul>
+        </div>
+
+        <hr/>
+
+      <app-mindmap-inspector/>
+
+    </div>
+
+</div>

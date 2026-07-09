@@ -8,7 +8,7 @@ import {uuid} from '@visuallyjs/browser-ui';
     <div class="vjs-mindmap-main vjs-mindmap-vertex">
         <div class="vjs-mindmap-title">{{data.label}}</div>
         <div class="vjs-mindmap-notes">{{data.notes}}</div>
-        <div class="vjs-mindmap-info"></div>
+        <div class="vjs-mindmap-info"(click)="showInfo()"></div>
         <div class="${CLASS_ADD_CHILD}" [attr.data-direction]="LEFT" (click)="addChild(LEFT)"></div>
         <div class="${CLASS_ADD_CHILD}" [attr.data-direction]="RIGHT" (click)="addChild(RIGHT)"></div>
     </div>
@@ -17,6 +17,10 @@ import {uuid} from '@visuallyjs/browser-ui';
 export class MainNodeComponent extends BaseNodeComponent {
   LEFT = LEFT;
   RIGHT = RIGHT;
+
+  showInfo() {
+    this.model.setSelection(this.getNode());
+  }
 
   addChild(direction: string) {
     const source = this.getPort(direction);

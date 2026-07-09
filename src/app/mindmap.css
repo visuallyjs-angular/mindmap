@@ -110,6 +110,10 @@
     transition: transform 0.2s, box-shadow 0.2s;
 }
 
+.vjs-selected-element {
+  outline:4px solid blue;
+}
+
 .vjs-mindmap-title {
     margin-top: 0.5rem;
     width: 100%;

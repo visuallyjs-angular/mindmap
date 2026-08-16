@@ -1,16 +1,13 @@
 import { Component, ViewChild, AfterViewInit } from '@angular/core';
 import { VisuallyJsModule, SurfaceComponent } from "@visuallyjs/browser-ui-angular";
-import { registerParser, registerExporter, uuid, EVENT_GRAPH_CLEARED, EVENT_UNDO, EVENT_REDO, Layouts } from "@visuallyjs/browser-ui"
+import { registerParser, registerExporter, uuid, EVENT_GRAPH_CLEARED, EVENT_UNDO, EVENT_REDO} from "@visuallyjs/browser-ui"
 
 import renderOptions from "./render-options"
 import viewOptions from "./view-options"
 import { MINDMAP_JSON, mindmapJsonExporter, mindmapJsonParser } from "./parser";
 import { MAIN } from "./definitions";
 
-import { MainNodeComponent } from "./components/main-node.component"
-import { SubtopicNodeComponent } from "./components/subtopic-node.component"
 import { MindmapInspectorComponent } from "./components/inspector.component"
-import {MindmapLayout} from './layout';
 
 @Component({
   selector: 'app-root',
@@ -25,7 +22,6 @@ export class App implements AfterViewInit {
   viewOptions = viewOptions
 
   constructor() {
-    Layouts.register("mindmap", MindmapLayout)
     registerParser(MINDMAP_JSON, mindmapJsonParser)
     registerExporter(MINDMAP_JSON, mindmapJsonExporter)
   }

@@ -23,7 +23,6 @@ export class MainNodeComponent extends BaseNodeComponent {
   }
 
   addChild(direction: string) {
-    const source = this.getPort(direction);
     const payload = {
       id: uuid(),
       parentId: this.getNode().id,
@@ -35,7 +34,7 @@ export class MainNodeComponent extends BaseNodeComponent {
 
     this.surface.model.transaction(() => {
       const node = this.surface.model.addNode(payload);
-      this.surface.model.addEdge({ source, target: node });
+      this.surface.model.addEdge({ source:this.getVertex(), target: node });
     });
 
     this.relayout();

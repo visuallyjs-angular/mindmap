@@ -11,11 +11,6 @@ export const mindmapJsonParser = (jd:string, model:VisuallyJsModel, parameters:a
     data.type = MAIN
     let mainTopic = model.addNode(data)
 
-    // add logical ports for connections to each side of the
-    // main node
-    model.addPort(mainTopic, {id:LEFT})
-    model.addPort(mainTopic,{id:RIGHT})
-
     const _processChildren = (focus:Node, direction:string) => {
         const c = focus.data.children || []
         c.forEach((_c:any) => {
@@ -30,13 +25,13 @@ export const mindmapJsonParser = (jd:string, model:VisuallyJsModel, parameters:a
 
     const _processRootChildren = (direction:string) => {
         const n = data[direction]
-        const source = mainTopic.getPort(direction)
+
         n.forEach((l:any) => {
             l.type = SUBTOPIC
             l.direction = direction
             l.children = l.children || []
             const ln = model.addNode(l)
-            model.addEdge({source, target:ln, data:{direction:direction}})
+            model.addEdge({source:mainTopic, target:ln, data:{direction:direction}})
             _processChildren(ln, direction)
         })
     }
